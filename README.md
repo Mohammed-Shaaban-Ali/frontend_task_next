@@ -34,10 +34,11 @@ This makes authentication more secure and allows handling the token inside **Nex
 ```
 FRONTEND_TASK_NEXT/
 ├── 📁 app/                          # Next.js App Router
-│   ├── 📁 (register)/               # Route group for registration flow
-│   │   ├── 📁 register/             # Register page
-│   │   └──📁 verify-email/          # Email verification page
-│   │   📁 login/                    # Login page
+│   ├──📁 auth                       # Auth Route
+│   │    ├── 📁 (register)/           # Route group for registration flow
+│   │    │       ├── 📁 register/     # Register page
+│   │    │       └──📁 verify-email/  # Email verification page
+│   │    └── 📁 login/                # Login page
 │   ├── 📁 dashboard/                # Protected dashboard page
 │   ├── 📄 error.tsx                 # Global error boundary
 │   ├── 📄 favicon.ico               # App favicon
@@ -70,13 +71,3 @@ FRONTEND_TASK_NEXT/
 ├── 📄 next.config.ts                # Next.js configuration
 └── 📄 package-lock.json             # Dependency lock file
 ```
-
-### 🗂️ Key Directories Explained
-
-- **`app/`** - Next.js 13+ App Router structure with file-based routing
-- **`components/`** - Modular, reusable React components organized by feature
-- **`redux/`** - State management using Redux Toolkit with RTK Query for API calls
-- **`types/`** - TypeScript interfaces and type definitions
-- **`lib/`** - Utility functions and configurations
-- **`providers/`** - React context providers for global state
-- **`middleware.ts`** - Handles authentication and route protection
