@@ -54,7 +54,7 @@ function RegisterForm() {
       email: "",
       password: "",
       password_confirmation: "",
-      mobile_country_code: "+20", // default Egypt
+      mobile_country_code: "+20",
       mobile: "",
     },
   });

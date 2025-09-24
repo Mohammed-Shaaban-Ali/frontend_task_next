@@ -31,6 +31,6 @@ export const NavLinks: {
   {
     label: "FAQs",
     href: "/faqs",
-    icon: faqsIcon,
+    icon: homeIcon,
   },
 ];

@@ -11,9 +11,9 @@ function RatingList({}: Props) {
         <div key={index} className="flex  flex-col gap-4 md::gap-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <h5 className="text-20 font-semibold text-black-500">
+              <span className="text-20 font-semibold text-black-500">
                 Alex Daewn
-              </h5>
+              </span>
               <div className="flex gap-1 items-center">
                 {Array.from({ length: 5 }).map((_, index) => (
                   <Star

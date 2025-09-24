@@ -12,7 +12,7 @@ function ProductCard({ product }: Props) {
   );
   const [isLocked, setIsLocked] = React.useState(product.isLocked || false);
   return (
-    <div className="max-w-[188px] md:max-w-[288px] space-y-3">
+    <div className="max-w-[188px] md:max-w-[288px] space-y-3 group">
       {/* Image Container */}
       <div className="relative w-full p-2 md:p-4 pb-2 rounded-[20px] border border-black/5">
         <div className="flex items-center justify-between gap-3 mb-2">
@@ -61,7 +61,7 @@ function ProductCard({ product }: Props) {
             alt={product.title}
             width={187}
             height={187}
-            className="object-cover "
+            className="object-cover group-hover:scale-105 transition-all duration-300"
           />
         </div>
       </div>
