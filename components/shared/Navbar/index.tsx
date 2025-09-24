@@ -43,7 +43,7 @@ export default function Navbar() {
               >
                 <Image
                   src={link.icon}
-                  alt={link.label}
+                  alt=""
                   width={20}
                   height={20}
                   className="w-5 h-5 "

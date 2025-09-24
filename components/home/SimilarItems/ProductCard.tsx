@@ -29,6 +29,7 @@ function ProductCard({ product }: Props) {
               onClick={() => setIsLocked(!isLocked)}
               variant={"outline"}
               size={"icon"}
+              aria-label={isLocked ? "Unlock" : "Lock"}
             >
               <Lock
                 className={` ${!isLocked && "text-primary"}`}
@@ -42,6 +43,7 @@ function ProductCard({ product }: Props) {
               onClick={() => setIsFavorited(!isFavorited)}
               variant={"outline"}
               size={"icon"}
+              aria-label={isFavorited ? "Unfavorite" : "Favorite"}
             >
               <Heart
                 size={14}

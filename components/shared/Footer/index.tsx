@@ -147,7 +147,7 @@ function Footer({}: Props) {
                 },
               ].map((item) => {
                 return (
-                  <a key={item.label} href={item.href}>
+                  <a key={item.label} href={item.href} aria-label={item.label}>
                     <item.icon
                       width={24}
                       height={24}
