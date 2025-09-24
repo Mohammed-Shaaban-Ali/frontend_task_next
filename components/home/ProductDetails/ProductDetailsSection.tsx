@@ -24,7 +24,7 @@ function ProductDetailsSection({}: Props) {
     setQuantity(Math.max(1, quantity + change));
   };
   return (
-    <div className="col-span-1 lg:col-span-4 space-y-4">
+    <div className="col-span-1 lg:col-span-4 w-full flex flex-col  gap-3">
       {/* Header */}
       <div className="flex items-center justify-between gap-3 ">
         <span className="border border-primary text-primary text-14 font-semibold px-5 h-9 flex items-center justify-center rounded-full  ">
@@ -69,6 +69,8 @@ function ProductDetailsSection({}: Props) {
         Lorem ipsum dolor sit amet, diam nonummy
       </p>
 
+      {/* line */}
+      <div className="h-px w-full bg-black-50 my-4"></div>
       {/* Product Options */}
       <div className="space-y-6 max-w-[300px]">
         {/* Type Selector */}
