@@ -80,7 +80,7 @@ function ProductImages({}: Props) {
       </div>
 
       {/* Thumbnail Images Swiper */}
-      <div className="grid grid-cols-3 gap-2 overflow-hidden w-full max-h-[120px] md:h-[160px]">
+      <div className="grid grid-cols-3 gap-2 overflow-hidden w-full max-h-[120px] md:h-[160px] md:max-h-[160px]">
         <Swiper
           modules={[Thumbs]}
           onSwiper={setThumbsSwiper}
