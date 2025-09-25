@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Star } from "lucide-react";
 import React from "react";
 import StarIcon from "@/public/icons/Star.svg";
 import StarFill from "@/public/icons/StarFill.svg";

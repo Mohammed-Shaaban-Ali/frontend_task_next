@@ -1,7 +1,6 @@
 "use client";
 import SectionTitle from "@/components/shared/SectionTitle";
 import { Button } from "@/components/ui/button";
-import { Star } from "lucide-react";
 import React from "react";
 import RatingList from "./RatingList";
 import AddCommentIcon from "@/public/icons/AddComment.svg";
