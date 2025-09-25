@@ -204,7 +204,7 @@ function ProductDetailsSection({}: Props) {
           </div>
         </div>
 
-        <div className="flex items-center flex-col md:flex-row gap-4 justify-between">
+        <div className="flex items-center w-full flex-col md:flex-row gap-4 justify-between">
           {/* Quantity Controls */}
           <div className="flex items-center w-full gap-5">
             <motion.div
@@ -251,11 +251,14 @@ function ProductDetailsSection({}: Props) {
 
           {/* Add to Cart Button */}
           <motion.div
-            className="w-full "
+            className="w-full flex items-center "
             whileHover={buttonHover}
             whileTap={buttonTap}
           >
-            <Button className="w-full md:w-[230px]">
+            <Button
+              className="w-full md:w-[230px] ms-auto
+            "
+            >
               Add To Cart
               <Image
                 src={shoppingbag}

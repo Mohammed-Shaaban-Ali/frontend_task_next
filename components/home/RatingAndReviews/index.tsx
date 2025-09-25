@@ -30,7 +30,7 @@ type Props = {};
 function RatingAndReviews({}: Props) {
   return (
     <motion.section
-      className="container my-5"
+      className="container my-12 relative"
       variants={fadeInUp}
       initial="initial"
       whileInView="whileInView"
