@@ -3,6 +3,10 @@ import React from "react";
 import { Heart, Lock, Star } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import loveAdd from "@/public/icons/love-add.svg";
+import loveAddFill from "@/public/icons/love-add-fill.svg";
+import bagAdd from "@/public/icons/bag-add.svg";
+import bagAddFill from "@/public/icons/bag-add-fill.svg";
 
 type Props = { product: IProduct };
 
@@ -31,11 +35,7 @@ function ProductCard({ product }: Props) {
               size={"icon"}
               aria-label={isLocked ? "Unlock" : "Lock"}
             >
-              <Lock
-                className={` ${!isLocked && "text-primary"}`}
-                size={14}
-                fill={isLocked ? "black" : "none"}
-              />
+              <Image src={isLocked ? bagAdd : bagAddFill} alt="" />
             </Button>
 
             {/* Favorite Button */}
@@ -45,11 +45,7 @@ function ProductCard({ product }: Props) {
               size={"icon"}
               aria-label={isFavorited ? "Unfavorite" : "Favorite"}
             >
-              <Heart
-                size={14}
-                className={` ${!isFavorited && "text-primary"}`}
-                fill={isFavorited ? "black" : "none"}
-              />
+              <Image src={isFavorited ? loveAdd : loveAddFill} alt="" />
             </Button>
           </div>
         </div>

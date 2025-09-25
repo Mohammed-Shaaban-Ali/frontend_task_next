@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { Heart, Lock, Minus, Plus, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
+import loveAdd from "@/public/icons/love-add.svg";
+import loveAddFill from "@/public/icons/love-add-fill.svg";
+import bagAdd from "@/public/icons/bag-add.svg";
+import bagAddFill from "@/public/icons/bag-add-fill.svg";
 import CustomizeSelectField from "@/components/shared/form/CustomizeTextField copy";
+import Image from "next/image";
 type Props = {};
 
 function ProductDetailsSection({}: Props) {
@@ -10,6 +14,8 @@ function ProductDetailsSection({}: Props) {
   const [selectSize, setSelectSize] = useState<string>("S");
   const [selectedColor, setSelectedColor] = useState("blue");
   const [quantity, setQuantity] = useState(1);
+  const [isFavorited, setIsFavorited] = useState(false);
+  const [isLocked, setIsLocked] = useState(false);
 
   const colors = [
     { name: "red", value: "#ef4444", label: "Red" },
@@ -34,13 +40,22 @@ function ProductDetailsSection({}: Props) {
         {/* Action Buttons */}
         <div className="flex gap-2 ms-auto">
           {/* Lock/Unlock Button */}
-          <Button variant={"outline"} size={"icon"} aria-label={"Lock"}>
-            <Lock className={`text-primary`} size={14} />
+          <Button
+            onClick={() => setIsLocked(!isLocked)}
+            variant={"outline"}
+            size={"icon"}
+            aria-label={"Lock"}
+          >
+            <Image src={isLocked ? bagAddFill : bagAdd} alt="" />
           </Button>
 
           {/* Favorite Button */}
-          <Button variant={"outline"} size={"icon"}>
-            <Heart size={14} className={`text-primary`} />
+          <Button
+            onClick={() => setIsFavorited(!isFavorited)}
+            variant={"outline"}
+            size={"icon"}
+          >
+            <Image src={isFavorited ? loveAddFill : loveAdd} alt="" />
           </Button>
         </div>
       </div>
