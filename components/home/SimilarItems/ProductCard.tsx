@@ -1,12 +1,13 @@
 import { IProduct } from "@/constants/Products";
 import React from "react";
-import { Heart, Lock, Star } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import loveAdd from "@/public/icons/love-add.svg";
 import loveAddFill from "@/public/icons/love-add-fill.svg";
 import bagAdd from "@/public/icons/bag-add.svg";
 import bagAddFill from "@/public/icons/bag-add-fill.svg";
+import StarFill from "@/public/icons/StarFill.svg";
+import { motion } from "motion/react";
 
 type Props = { product: IProduct };
 
@@ -16,7 +17,17 @@ function ProductCard({ product }: Props) {
   );
   const [isLocked, setIsLocked] = React.useState(product.isLocked || false);
   return (
-    <div className="max-w-[188px] md:max-w-[288px] space-y-3 group">
+    <motion.div
+      className="max-w-[188px] md:max-w-[288px] space-y-3 group"
+      initial="initial"
+      whileHover="hover"
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.6 },
+      }}
+      viewport={{ once: true }}
+    >
       {/* Image Container */}
       <div className="relative w-full p-2 md:p-4 pb-2 rounded-[20px] border border-black/5">
         <div className="flex items-center justify-between gap-3 mb-2">
@@ -72,7 +83,7 @@ function ProductCard({ product }: Props) {
 
           {/* Rating */}
           <div className="flex items-center gap-1 mb-2">
-            <Star size={18} className="text-primary fill-primary" />
+            <Image src={StarFill} alt="" width={18} height={18} />
             <span className="text-12 font-semibold text-black-500 ">
               {product.rating}
             </span>
@@ -123,7 +134,7 @@ function ProductCard({ product }: Props) {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

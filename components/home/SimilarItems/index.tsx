@@ -5,6 +5,8 @@ import ProductCard from "./ProductCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, A11y } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "motion/react";
+import { fadeInUp, buttonHover, buttonTap } from "@/lib/animations";
 
 // Import Swiper styles
 import "swiper/css";
@@ -17,12 +19,27 @@ type Props = {};
 
 function SimilarItems({}: Props) {
   return (
-    <section className="my-20 mb-32">
+    <motion.section
+      className="my-20 mb-32"
+      variants={fadeInUp}
+      initial="initial"
+      whileInView="whileInView"
+      viewport={{ once: true }}
+    >
       {/* title */}
       <SectionTitle title="Similar Items" />
 
       {/* Swiper slider */}
-      <div className="relative mt-6 px-2">
+      <motion.div
+        className="relative mt-6 px-2"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.6, delay: 0.2 },
+        }}
+        viewport={{ once: true }}
+      >
         <div className="overflow-x-hidden">
           <Swiper
             dir="rtl"
@@ -69,8 +86,8 @@ function SimilarItems({}: Props) {
             <ChevronRight size={24} />
           </Button>
         </div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
 

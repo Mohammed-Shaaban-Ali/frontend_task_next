@@ -16,10 +16,11 @@ import "swiper/css/thumbs";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ProductDetailsData } from "@/constants/Products";
 
 type Props = {};
 
-const productImages = [image1, image2, image3, image1, image2, image3];
+const productImages = ProductDetailsData?.images;
 
 function ProductImages({}: Props) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);

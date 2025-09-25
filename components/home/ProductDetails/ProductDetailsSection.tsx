@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { Heart, Lock, Minus, Plus, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -8,6 +9,16 @@ import bagAddFill from "@/public/icons/bag-add-fill.svg";
 import shoppingbag from "@/public/icons/shoppingbag.svg";
 import CustomizeSelectField from "@/components/shared/form/CustomizeTextField copy";
 import Image from "next/image";
+import { motion } from "motion/react";
+import {
+  staggerContainerInView,
+  staggerItemInView,
+  buttonHover,
+  buttonTap,
+  scaleInView,
+} from "@/lib/animations";
+import { ProductDetailsData } from "@/constants/Products";
+
 type Props = {};
 
 function ProductDetailsSection({}: Props) {
@@ -15,25 +26,27 @@ function ProductDetailsSection({}: Props) {
   const [selectSize, setSelectSize] = useState<string>("S");
   const [selectedColor, setSelectedColor] = useState("blue");
   const [quantity, setQuantity] = useState(1);
-  const [isFavorited, setIsFavorited] = useState(false);
-  const [isLocked, setIsLocked] = useState(false);
+  const [isFavorited, setIsFavorited] = useState(
+    ProductDetailsData.isFavorited
+  );
+  const [isLocked, setIsLocked] = useState(ProductDetailsData.isLocked);
 
-  const colors = [
-    { name: "red", value: "#ef4444", label: "Red" },
-    { name: "blue", value: "#3b82f6", label: "Blue" },
-    { name: "brown", value: "#a3a3a3", label: "Brown" },
-    { name: "lightblue", value: "#60a5fa", label: "Light Blue" },
-    { name: "gray", value: "#6b7280", label: "Gray" },
-  ];
-
-  const price = 300;
   const handleQuantityChange = (change: number) => {
     setQuantity(Math.max(1, quantity + change));
   };
   return (
-    <div className="col-span-1 lg:col-span-4 w-full flex flex-col  gap-3">
+    <motion.div
+      className="col-span-1 lg:col-span-4 w-full flex flex-col  gap-3"
+      variants={staggerContainerInView}
+      initial="initial"
+      whileInView="whileInView"
+      viewport={{ once: true }}
+    >
       {/* Header */}
-      <div className="flex items-center justify-between gap-3 ">
+      <motion.div
+        className="flex items-center justify-between gap-3"
+        variants={staggerItemInView}
+      >
         <span className="border border-primary text-primary text-14 font-semibold px-5 h-9 flex items-center justify-center rounded-full  ">
           T-Shirt
         </span>
@@ -41,54 +54,74 @@ function ProductDetailsSection({}: Props) {
         {/* Action Buttons */}
         <div className="flex gap-2 ms-auto">
           {/* Lock/Unlock Button */}
-          <Button
-            onClick={() => setIsLocked(!isLocked)}
-            variant={"outline"}
-            size={"icon"}
-            aria-label={"Lock"}
-          >
-            <Image src={isLocked ? bagAddFill : bagAdd} alt="" />
-          </Button>
+          <motion.div whileHover={buttonHover} whileTap={buttonTap}>
+            <Button
+              onClick={() => setIsLocked(!isLocked)}
+              variant={"outline"}
+              size={"icon"}
+              aria-label={"Lock"}
+            >
+              <Image src={isLocked ? bagAddFill : bagAdd} alt="" />
+            </Button>
+          </motion.div>
 
           {/* Favorite Button */}
-          <Button
-            onClick={() => setIsFavorited(!isFavorited)}
-            variant={"outline"}
-            size={"icon"}
-          >
-            <Image src={isFavorited ? loveAddFill : loveAdd} alt="" />
-          </Button>
+          <motion.div whileHover={buttonHover} whileTap={buttonTap}>
+            <Button
+              onClick={() => setIsFavorited(!isFavorited)}
+              variant={"outline"}
+              size={"icon"}
+            >
+              <Image src={isFavorited ? loveAddFill : loveAdd} alt="" />
+            </Button>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Product Title */}
-      <h2 className="text-24 font-semibold text-black-500 leading-tight max-w-[520px]">
-        J.VER Man Shirts Solid Long Sleeve Stretch Wrinkle-Free With Blue
-      </h2>
+      <motion.h2
+        className="text-24 font-semibold text-black-500 leading-tight max-w-[520px]"
+        variants={staggerItemInView}
+      >
+        {ProductDetailsData.title}
+      </motion.h2>
 
       {/* Price */}
-      <div className="space-y-1">
+      <motion.div className="space-y-1" variants={staggerItemInView}>
         <div className="flex items-center gap-3">
           <span className="text-20 font-semibold text-black-500">
-            ${price.toFixed(2)}
+            ${ProductDetailsData.price.toFixed(2)}
           </span>
-          <span className="text-16 text-black-200 line-through">$400.00</span>
+          <span className="text-16 text-black-200 line-through">
+            {" "}
+            ${ProductDetailsData.originalPrice.toFixed(2)}
+          </span>
         </div>
         <p className="text-12 text-black-300">
           This price is exclusive of taxes.
         </p>
-      </div>
+      </motion.div>
 
       {/* Description */}
-      <p className="text-black-500 text-14  max-w-[520px]">
+      <motion.p
+        className="text-black-500 text-14  max-w-[520px]"
+        variants={staggerItemInView}
+      >
         Lorem ipsum dolor sit, consectetur adipiscing elit, sed diam nonummy
         Lorem ipsum dolor sit amet, diam nonummy
-      </p>
+      </motion.p>
 
       {/* line */}
-      <div className="h-px w-full bg-black-50 my-4"></div>
+      <motion.div
+        className="h-px w-full bg-black-50 my-4"
+        variants={staggerItemInView}
+      />
+
       {/* Product Options */}
-      <div className="space-y-6 max-w-[300px]">
+      <motion.div
+        className="space-y-6 max-w-[300px]"
+        variants={staggerItemInView}
+      >
         {/* Type Selector */}
         <CustomizeSelectField
           select={selectType}
@@ -114,14 +147,26 @@ function ProductDetailsSection({}: Props) {
             { value: "XL", label: "XL" },
           ]}
         />
-      </div>
+      </motion.div>
 
       {/* Colors */}
-      <div className="space-y-3">
+      <motion.div className="space-y-3" variants={staggerItemInView}>
         <h3 className="text-20 font-semibold text-black-500">Colors</h3>
-        <div className="flex items-center gap-3 flex-wrap">
-          {colors.map((color) => (
-            <div key={color.name} className="flex flex-col">
+        <motion.div
+          className="flex items-center gap-3 flex-wrap"
+          variants={staggerContainerInView}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+        >
+          {ProductDetailsData.colors.map((color, index) => (
+            <motion.div
+              key={color.name}
+              className="flex flex-col"
+              variants={staggerItemInView}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <button
                 type="button"
                 onClick={() => setSelectedColor(color.name)}
@@ -143,18 +188,18 @@ function ProductDetailsSection({}: Props) {
               >
                 {color.name}
               </span>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Quantity and Add to Cart */}
-      <div className="space-y-3">
+      <motion.div className="space-y-3" variants={staggerItemInView}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1">
             <h3 className="text-20 font-semibold text-black-500">Quantity</h3>
             <p className="text-16 text-black-200">
-              (${price.toFixed(2)} for Piece)
+              (${ProductDetailsData.price.toFixed(2)} for Piece)
             </p>
           </div>
         </div>
@@ -162,40 +207,63 @@ function ProductDetailsSection({}: Props) {
         <div className="flex items-center flex-col md:flex-row gap-4 justify-between">
           {/* Quantity Controls */}
           <div className="flex items-center w-full gap-5">
-            <div className="flex items-center bg-gray rounded-[12px] h-14 p-2 ">
-              <button
+            <motion.div
+              className="flex items-center bg-gray rounded-[12px] h-14 p-2"
+              variants={scaleInView}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true }}
+            >
+              <motion.button
                 onClick={() => handleQuantityChange(-1)}
                 className="w-10 h-10 flex cursor-pointer
                  items-center rounded-md justify-center bg-white hover:bg-gray-50 transition-colors"
+                whileHover={buttonHover}
+                whileTap={buttonTap}
               >
                 <Minus className="w-4 h-4" />
-              </button>
+              </motion.button>
               <span className="w-16 text-center font-medium">
                 {quantity.toString().padStart(2, "0")}
               </span>
-              <button
+              <motion.button
                 onClick={() => handleQuantityChange(1)}
                 className="w-10 h-10 flex cursor-pointer
                  items-center rounded-md justify-center bg-white hover:bg-gray-50 transition-colors"
+                whileHover={buttonHover}
+                whileTap={buttonTap}
               >
                 <Plus className="w-4 h-4" />
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
 
             {/* Total Price */}
-            <span className="text-24 font-semibold text-black-500">
-              ${(price * quantity).toFixed(2)}
-            </span>
+            <motion.span
+              className="text-24 font-semibold text-black-500"
+              key={quantity}
+              initial={{ scale: 1.2, opacity: 0.5 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              ${(ProductDetailsData.price * quantity).toFixed(2)}
+            </motion.span>
           </div>
 
           {/* Add to Cart Button */}
-          <Button className="w-full md:w-[230px]">
-            Add To Cart
-            <Image src={shoppingbag} width={24} height={24} alt="shoppingbag" />
-          </Button>
+          <motion.div whileHover={buttonHover} whileTap={buttonTap}>
+            <Button className="w-full md:w-[230px]">
+              Add To Cart
+              <Image
+                src={shoppingbag}
+                width={24}
+                height={24}
+                alt="shoppingbag"
+              />
+            </Button>
+          </motion.div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

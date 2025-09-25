@@ -26,6 +26,7 @@ This makes authentication more secure and allows handling the token inside **Nex
 - **Secure Auth Flow** → Token saved in cookies.
 - **State Management** → Using **Redux Toolkit Query (RTK Query)**.
 - **UI Components** → Using [shadcn/ui](https://ui.shadcn.com/).
+- **SEO Optimization** → Implemented metadata (title, description, keywords, Open Graph, Twitter cards) for better search engine visibility and social sharing.
 
 ---
 
