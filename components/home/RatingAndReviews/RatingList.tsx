@@ -7,7 +7,7 @@ type Props = {};
 function RatingList({}: Props) {
   return (
     <div className="space-y-6 mt-5">
-      {Array.from({ length: 3 }).map((_, index) => (
+      {Array.from({ length: 4 }).map((_, index) => (
         <div key={index} className="flex  flex-col gap-4 md::gap-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -32,7 +32,7 @@ function RatingList({}: Props) {
             sed diam nonummy dolor sit Lorem ipsum dolor sit amet, consectetuer
             adipiscing elit, sed{" "}
           </p>
-          {index != 2 ? (
+          {index != 3 ? (
             <div className="h-px w-full bg-black-50"></div>
           ) : (
             <Button variant={"ghost"} className="max-w-[210px] mx-auto mt-3">
