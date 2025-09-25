@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import React from "react";
-
+import StarIcon from "@/public/icons/Star.svg";
+import StarFill from "@/public/icons/StarFill.svg";
+import Image from "next/image";
 type Props = {};
 
 function RatingList({}: Props) {
@@ -16,10 +18,12 @@ function RatingList({}: Props) {
               </span>
               <div className="flex gap-1 items-center">
                 {Array.from({ length: 5 }).map((_, index) => (
-                  <Star
+                  <Image
+                    src={index < 4 ? StarFill : StarIcon}
+                    width={20}
+                    height={20}
+                    alt={` star ${index}`}
                     key={index}
-                    width={18}
-                    className="text-primary fill-primary  last:text-primary/40 last:fill-primary/50"
                   />
                 ))}
               </div>

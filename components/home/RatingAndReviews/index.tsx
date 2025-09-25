@@ -1,10 +1,12 @@
 "use client";
 import SectionTitle from "@/components/shared/SectionTitle";
 import { Button } from "@/components/ui/button";
-import { MessageCircleMore, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import React from "react";
 import RatingList from "./RatingList";
-
+import AddCommentIcon from "@/public/icons/AddComment.svg";
+import StarFill from "@/public/icons/StarFill.svg";
+import Image from "next/image";
 type Props = {};
 
 const reatStat = [
@@ -36,7 +38,7 @@ function RatingAndReviews({}: Props) {
             {reatStat.map((item, index) => (
               <div key={index} className="flex items-center gap-2">
                 <div className="flex items-center gap-1">
-                  <Star width={18} className="text-primary fill-primary " />
+                  <Image src={StarFill} width={24} height={24} alt="" />
                   <span className="text-[14px] font-semibold text-black-300">
                     {item.number}
                   </span>
@@ -58,8 +60,14 @@ function RatingAndReviews({}: Props) {
           <div className="md:flex flex-col items-center ms-auto me-2 hidden">
             <span className="text-16 text-black-300 -mb-2">Total Reviews</span>
             <span className="text-60 font-bold text-black-500">3.0K</span>
-            <Button icon={<MessageCircleMore className="!fill-primary" />}>
+            <Button>
               Add Comment
+              <Image
+                src={AddCommentIcon}
+                alt="AddCommentIcon"
+                width={24}
+                height={24}
+              />
             </Button>
           </div>
         </div>
