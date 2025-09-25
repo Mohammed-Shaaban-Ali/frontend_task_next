@@ -5,6 +5,7 @@ import loveAdd from "@/public/icons/love-add.svg";
 import loveAddFill from "@/public/icons/love-add-fill.svg";
 import bagAdd from "@/public/icons/bag-add.svg";
 import bagAddFill from "@/public/icons/bag-add-fill.svg";
+import shoppingbag from "@/public/icons/shoppingbag.svg";
 import CustomizeSelectField from "@/components/shared/form/CustomizeTextField copy";
 import Image from "next/image";
 type Props = {};
@@ -124,7 +125,7 @@ function ProductDetailsSection({}: Props) {
               <button
                 type="button"
                 onClick={() => setSelectedColor(color.name)}
-                className={`w-14 h-14 bg-gray hover:bg-gray-200 transition-all duration-300 rounded-full border-2 flex items-center justify-center cursor-pointer ${
+                className={`w-11 h-11 md:w-14 md:h-14 bg-gray hover:bg-gray-200 transition-all duration-300 rounded-full border-2 flex items-center justify-center cursor-pointer ${
                   selectedColor === color.name
                     ? "border-black"
                     : " border-transparent"
@@ -132,7 +133,7 @@ function ProductDetailsSection({}: Props) {
               >
                 <div
                   style={{ backgroundColor: color.value }}
-                  className="w-8 h-8 rounded-full"
+                  className="w-6 h-6 md:w-8 md:h-8 rounded-full"
                 ></div>
               </button>
               <span
@@ -190,7 +191,7 @@ function ProductDetailsSection({}: Props) {
           {/* Add to Cart Button */}
           <Button className="w-full md:w-[230px]">
             Add To Cart
-            <ShoppingBag className="w-5 h-5 " />
+            <Image src={shoppingbag} width={24} height={24} alt="shoppingbag" />
           </Button>
         </div>
       </div>
