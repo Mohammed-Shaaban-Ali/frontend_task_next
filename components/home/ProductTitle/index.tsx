@@ -52,13 +52,13 @@ function ProductTitle({ title }: Props) {
       {/* breadcrumb */}
       <section className="container">
         {" "}
-        <div className="container px-4 flex items-center bg-gray rounded-[16px] mt-3 h-14">
+        <div className="container px-4 flex items-center bg-gray rounded-[16px] mt-3 h-14 overflow-x-auto">
           {["Home", "Our Category", title].map((word, i) => {
             return (
               <span
                 key={word}
                 className={`
-              text-16 text-black-500 font-semibold last:text-black-200 flex items-center gap-1
+              text-16 text-black-500 font-semibold last:text-black-200 flex items-center gap-1 text-nowrap
               
             `}
               >
