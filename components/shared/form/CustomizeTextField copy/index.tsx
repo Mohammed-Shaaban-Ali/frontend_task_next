@@ -30,7 +30,7 @@ function CustomizeSelectField({
 }: CustomizeTextFieldProps) {
   return (
     <div className="relative  h-[45px] ">
-      <label className="absolute -top-3 left-4 bg-white px-2 text-12 text-black-500">
+      <label className="absolute -top-3 left-4 bg-white px-2 text-[12px] text-black-500">
         {label}
       </label>
 

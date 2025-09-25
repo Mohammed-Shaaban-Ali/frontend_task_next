@@ -119,7 +119,7 @@ function ProductDetailsSection({}: Props) {
 
       {/* Product Options */}
       <motion.div
-        className="space-y-6 max-w-[300px]"
+        className="space-y-6 w-full md:max-w-[300px]"
         variants={staggerItemInView}
       >
         {/* Type Selector */}
@@ -250,7 +250,11 @@ function ProductDetailsSection({}: Props) {
           </div>
 
           {/* Add to Cart Button */}
-          <motion.div whileHover={buttonHover} whileTap={buttonTap}>
+          <motion.div
+            className="w-full "
+            whileHover={buttonHover}
+            whileTap={buttonTap}
+          >
             <Button className="w-full md:w-[230px]">
               Add To Cart
               <Image
